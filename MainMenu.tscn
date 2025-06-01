@@ -1,0 +1,226 @@
+[gd_scene load_steps=20 format=3 uid="uid://b5lq4sqw1by6i"]
+
+[ext_resource type="Script" uid="uid://c563j0jluaews" path="res://main_menu.gd" id="1_i26rj"]
+[ext_resource type="AudioStream" uid="uid://chj13fdn3prqt" path="res://8-bit-dungeon-251388.mp3" id="2_eiy7p"]
+[ext_resource type="Texture2D" uid="uid://dtnq02yiijea5" path="res://banner_modern.png" id="2_h7a2f"]
+[ext_resource type="Texture2D" uid="uid://c2ooumbx1auhg" path="res://48006021-7495-4ed3-81ff-0dc9fdfdd07c.jpg" id="2_iwfq2"]
+[ext_resource type="Texture2D" uid="uid://d1gemgj21lobh" path="res://banner_hanging.png" id="4_qoqlk"]
+[ext_resource type="Script" uid="uid://dbap0gqox0ty1" path="res://MarkdownLabel-18e13b09353b89caa3e64636572ccf52a519e120/addons/markdownlabel/markdownlabel.gd" id="6_31qfy"]
+[ext_resource type="Script" uid="uid://dcx7crs23nf4" path="res://MarkdownLabel-18e13b09353b89caa3e64636572ccf52a519e120/addons/markdownlabel/header_formats/h1_format.gd" id="7_qie43"]
+[ext_resource type="Script" uid="uid://d0sin64i4v3op" path="res://MarkdownLabel-18e13b09353b89caa3e64636572ccf52a519e120/addons/markdownlabel/header_formats/h2_format.gd" id="8_61cf8"]
+[ext_resource type="Script" uid="uid://dlok0dv1tq2bf" path="res://MarkdownLabel-18e13b09353b89caa3e64636572ccf52a519e120/addons/markdownlabel/header_formats/h3_format.gd" id="9_rnncn"]
+[ext_resource type="Script" uid="uid://bayuh2vafablg" path="res://MarkdownLabel-18e13b09353b89caa3e64636572ccf52a519e120/addons/markdownlabel/header_formats/h4_format.gd" id="10_3fnrj"]
+[ext_resource type="Script" uid="uid://dfr1w7u3jgni3" path="res://MarkdownLabel-18e13b09353b89caa3e64636572ccf52a519e120/addons/markdownlabel/header_formats/h5_format.gd" id="11_m04lp"]
+[ext_resource type="Script" uid="uid://bsi6dexoofpe6" path="res://MarkdownLabel-18e13b09353b89caa3e64636572ccf52a519e120/addons/markdownlabel/header_formats/h6_format.gd" id="12_1thib"]
+[ext_resource type="Texture2D" uid="uid://c7m6cmus7vgfl" path="res://panel_border_brown.png" id="13_qie43"]
+
+[sub_resource type="Resource" id="Resource_iht1c"]
+resource_local_to_scene = true
+script = ExtResource("7_qie43")
+font_size = 2.285
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_l1t4j"]
+resource_local_to_scene = true
+script = ExtResource("8_61cf8")
+font_size = 1.714
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_dl1jy"]
+resource_local_to_scene = true
+script = ExtResource("9_rnncn")
+font_size = 1.428
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_y4010"]
+resource_local_to_scene = true
+script = ExtResource("10_3fnrj")
+font_size = 1.142
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_2gjqv"]
+resource_local_to_scene = true
+script = ExtResource("11_m04lp")
+font_size = 1.0
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_ig1gi"]
+resource_local_to_scene = true
+script = ExtResource("12_1thib")
+font_size = 0.857
+is_bold = false
+is_italic = false
+is_underlined = false
+override_font_color = false
+font_color = Color(1, 1, 1, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i26rj")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(376, 312)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_iwfq2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_eiy7p")
+autoplay = true
+parameters/looping = true
+
+[node name="BannerHanging" type="Sprite2D" parent="."]
+position = Vector2(382, 97)
+texture = ExtResource("4_qoqlk")
+
+[node name="Title" type="Label" parent="BannerHanging"]
+offset_left = -130.0
+offset_top = -8.0
+offset_right = 134.0
+offset_bottom = 15.0
+text = "Smelly Dungeon"
+horizontal_alignment = 1
+
+[node name="Start Game" type="Button" parent="."]
+layout_mode = 2
+offset_left = 253.0
+offset_top = 199.0
+offset_right = 517.0
+offset_bottom = 255.0
+text = "Start Game"
+icon = ExtResource("2_h7a2f")
+flat = true
+icon_alignment = 1
+
+[node name="ShowCredits" type="Button" parent="."]
+layout_mode = 2
+offset_left = 254.0
+offset_top = 272.0
+offset_right = 518.0
+offset_bottom = 328.0
+text = "Credits"
+icon = ExtResource("2_h7a2f")
+flat = true
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 616.0
+offset_right = 194.0
+offset_bottom = 639.0
+text = "Smelly Dungeon,"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 617.0
+offset_right = 768.0
+offset_bottom = 640.0
+text = "GSE Jam SS25"
+
+[node name="CreditsContainer" type="NinePatchRect" parent="."]
+offset_left = 48.0
+offset_top = 128.0
+offset_right = 736.0
+offset_bottom = 528.0
+texture = ExtResource("13_qie43")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="ColorRect" type="ColorRect" parent="CreditsContainer"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 680.0
+offset_bottom = 392.0
+color = Color(0.387389, 0.387389, 0.387389, 1)
+
+[node name="Credits" type="RichTextLabel" parent="CreditsContainer"]
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 720.0
+offset_bottom = 361.0
+bbcode_enabled = true
+text = "[font_size=36]Programming[/font_size]
+TheElk205
+
+[font_size=36]Assets used[/font_size]
+Map: [url=https://kenney.nl/assets/minimap-pack]Minimap Pack - Kenny[/url]
+UI sprites: [url=https://kenney.nl/assets/ui-pack-adventure]UI Pack - Adventure[/url]
+Mouse and rat: [url=https://craftpix.net/freebies/free-street-animal-pixel-art-asset-pack/?num=1&count=1082&sq=rat&pos=4]Craftpix - free street animal asset pack[/url]
+Cheese: [url=https://cheddagames.itch.io/cheese-platter-pixel-pack]Cheese / Anti-Pasto Platter Animated Pixel Pack Sprites (16 items x 4 Frames) - Power Up Your Game Fast![/url]
+Menu music: [url=https://pixabay.com/music/video-games-8-bit-dungeon-251388/]8 Bit dungeon - Kaden_Cook[/url]
+Background music: [url=https://pixabay.com/music/video-games-dungeon-level-upbeat-power-music-160-bpm-293383/]Dungeon Level upbeat power music[/url]
+Menu Background Image: [url=https://www.freepik.com/free-vector/dark-medieval-dungeon-with-stone-wall-game_402018670.htm#fromView=keyword&page=1&position=1&uuid=63f3891c-61f2-41bb-8d06-02dcaa443a95&query=Dungeon]Dark medieval dungeon with stone artwork for game[/url]
+Mardown Label Godot: [url=https://godotengine.org/asset-library/asset/2302]MarkdownLabel[/url]
+Splash image: Generated by AI"
+fit_content = true
+script = ExtResource("6_31qfy")
+markdown_text = "# Programming
+TheElk205
+
+# Assets used
+Map: [Minimap Pack - Kenny](https://kenney.nl/assets/minimap-pack)
+UI sprites: [UI Pack - Adventure](https://kenney.nl/assets/ui-pack-adventure)
+Mouse and rat: [Craftpix - free street animal asset pack](https://craftpix.net/freebies/free-street-animal-pixel-art-asset-pack/?num=1&count=1082&sq=rat&pos=4)
+Cheese: [Cheese / Anti-Pasto Platter Animated Pixel Pack Sprites (16 items x 4 Frames) - Power Up Your Game Fast!](https://cheddagames.itch.io/cheese-platter-pixel-pack)
+Menu music: [8 Bit dungeon - Kaden_Cook](https://pixabay.com/music/video-games-8-bit-dungeon-251388/)
+Background music: [Dungeon Level upbeat power music](https://pixabay.com/music/video-games-dungeon-level-upbeat-power-music-160-bpm-293383/)
+Menu Background Image: [Dark medieval dungeon with stone artwork for game](https://www.freepik.com/free-vector/dark-medieval-dungeon-with-stone-wall-game_402018670.htm#fromView=keyword&page=1&position=1&uuid=63f3891c-61f2-41bb-8d06-02dcaa443a95&query=Dungeon)
+Mardown Label Godot: [MarkdownLabel](https://godotengine.org/asset-library/asset/2302)
+Splash image: Generated by AI"
+h1 = SubResource("Resource_iht1c")
+h2 = SubResource("Resource_l1t4j")
+h3 = SubResource("Resource_dl1jy")
+h4 = SubResource("Resource_y4010")
+h5 = SubResource("Resource_2gjqv")
+h6 = SubResource("Resource_ig1gi")
+metadata/_custom_type_script = "uid://dbap0gqox0ty1"
+
+[node name="CloseCredits" type="Button" parent="CreditsContainer/Credits"]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 16.0
+offset_right = 642.0
+offset_bottom = 47.0
+text = "Close"
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 616.0
+offset_right = 240.0
+offset_bottom = 639.0
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="pressed" from="Start Game" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ShowCredits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CreditsContainer/Credits/CloseCredits" to="." method="_on_close_credits_pressed"]

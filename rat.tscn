@@ -1,0 +1,112 @@
+[gd_scene load_steps=13 format=3 uid="uid://bf082kjperuua"]
+
+[ext_resource type="Script" uid="uid://dbmpgf50et88b" path="res://rat.gd" id="1_xl1m0"]
+[ext_resource type="Texture2D" uid="uid://b0wokaenwu7pj" path="res://character.png" id="2_p3nl4"]
+[ext_resource type="Texture2D" uid="uid://c6hx54p5v78as" path="res://RatWalk.png" id="3_p3nl4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_172ra"]
+size = Vector2(25, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja7ka"]
+atlas = ExtResource("3_p3nl4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eotln"]
+atlas = ExtResource("3_p3nl4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqrbo"]
+atlas = ExtResource("3_p3nl4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wev1m"]
+atlas = ExtResource("3_p3nl4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4shel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ja7ka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eotln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqrbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wev1m")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3nl4"]
+radius = 42.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_p3nl4"]
+thickness = 5
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_172ra"]
+color = Color(0.941176, 0, 0, 1)
+thickness = 5
+
+[node name="Rat" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_xl1m0")
+waypointObjects = Array[NodePath]([NodePath("../RatWaypoints/point0"), NodePath("../RatWaypoints/point1")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_p3nl4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -0.5)
+shape = SubResource("RectangleShape2D_172ra")
+disabled = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+position = Vector2(1, -12)
+sprite_frames = SubResource("SpriteFrames_4shel")
+animation = &"walk"
+
+[node name="Nose" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nose"]
+shape = SubResource("CircleShape2D_p3nl4")
+
+[node name="Catch" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Catch"]
+polygon = PackedVector2Array(11, -9, 0, 0, 11, 9)
+
+[node name="Eyes" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Eyes"]
+polygon = PackedVector2Array(116, -65, 116, 46, 22, 32, 5, -2, 22, -42)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Eyes"]
+polygon = PackedVector2Array(-31, -12, -31, 4, -2, 4, -1, 0, -3, -5)
+
+[node name="VisionBar" type="ProgressBar" parent="."]
+offset_left = -17.0
+offset_top = -11.0
+offset_right = 13.0
+offset_bottom = -6.0
+theme_override_styles/background = SubResource("StyleBoxLine_p3nl4")
+theme_override_styles/fill = SubResource("StyleBoxLine_172ra")
+show_percentage = false
+
+[connection signal="area_entered" from="Nose" to="." method="_on_nose_area_entered"]
+[connection signal="area_exited" from="Nose" to="." method="_on_nose_area_exited"]
+[connection signal="area_entered" from="Eyes" to="." method="_on_eyes_area_entered"]
+[connection signal="area_exited" from="Eyes" to="." method="_on_eyes_area_exited"]

@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw4uyrsr20eo1"]
+
+[ext_resource type="Script" uid="uid://f5jqsqkittln" path="res://game_over.gd" id="1_jywu3"]
+[ext_resource type="Texture2D" uid="uid://c2ooumbx1auhg" path="res://48006021-7495-4ed3-81ff-0dc9fdfdd07c.jpg" id="2_3y56u"]
+[ext_resource type="AudioStream" uid="uid://chj13fdn3prqt" path="res://8-bit-dungeon-251388.mp3" id="3_ua7od"]
+[ext_resource type="Texture2D" uid="uid://d1gemgj21lobh" path="res://banner_hanging.png" id="4_3fonj"]
+[ext_resource type="Texture2D" uid="uid://dtnq02yiijea5" path="res://banner_modern.png" id="5_758bs"]
+
+[node name="GameOver" type="Control" node_paths=PackedStringArray("label", "win")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jywu3")
+label = NodePath("time label")
+win = NodePath("win")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(376, 312)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_3y56u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ua7od")
+autoplay = true
+parameters/looping = true
+
+[node name="BannerHanging" type="Sprite2D" parent="."]
+position = Vector2(382, 97)
+texture = ExtResource("4_3fonj")
+
+[node name="Title" type="Label" parent="BannerHanging"]
+offset_left = -130.0
+offset_top = -8.0
+offset_right = 134.0
+offset_bottom = 15.0
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Back To Menu" type="Button" parent="."]
+layout_mode = 2
+offset_left = 253.0
+offset_top = 265.0
+offset_right = 517.0
+offset_bottom = 321.0
+text = "Back to Meu"
+icon = ExtResource("5_758bs")
+flat = true
+icon_alignment = 1
+
+[node name="time label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 417.0
+offset_top = 226.0
+offset_right = 481.0
+offset_bottom = 249.0
+text = "00:00:00"
+
+[node name="time" type="Label" parent="."]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 224.0
+offset_right = 356.0
+offset_bottom = 247.0
+text = "Your time:"
+
+[node name="win" type="Label" parent="."]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 153.0
+offset_right = 479.0
+offset_bottom = 202.0
+text = "You got caught.
+Better luck enxt time :)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Back To Menu" to="." method="_on_back_to_menu_pressed"]

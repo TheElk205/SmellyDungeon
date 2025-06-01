@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctwt2dj1epwp5"]
+
+[ext_resource type="Script" uid="uid://m22g1yl2ohpe" path="res://cheese.gd" id="1_s0ldm"]
+[ext_resource type="Texture2D" uid="uid://b3tk11016oadw" path="res://brie_64x64.png" id="2_d3rdx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma2yl"]
+atlas = ExtResource("2_d3rdx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_row1r"]
+atlas = ExtResource("2_d3rdx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmbpp"]
+atlas = ExtResource("2_d3rdx")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq48a"]
+atlas = ExtResource("2_d3rdx")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fsht3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma2yl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_row1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmbpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq48a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_s0ldm"]
+thickness = 5
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_d3rdx"]
+color = Color(0.564, 0.568044, 0.231414, 1)
+thickness = 5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0ldm"]
+radius = 22.6667
+
+[node name="Cheese" type="CharacterBody2D"]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_s0ldm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 3
+sprite_frames = SubResource("SpriteFrames_fsht3")
+animation = &"idle"
+
+[node name="Timerbar" type="ProgressBar" parent="."]
+offset_left = -32.0
+offset_top = -28.0
+offset_right = 32.0
+offset_bottom = -22.0
+theme_override_styles/background = SubResource("StyleBoxLine_s0ldm")
+theme_override_styles/fill = SubResource("StyleBoxLine_d3rdx")
+max_value = 3.0
+show_percentage = false
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_s0ldm")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
