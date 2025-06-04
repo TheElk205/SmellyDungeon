@@ -30,7 +30,7 @@ GlobalData="*res://GlobalData.gd"
 window/size/viewport_width=1600
 window/size/viewport_height=1296
 window/size/resizable=false
-window/stretch/scale=2.0
+window/stretch/mode="viewport"
 
 [input]
 

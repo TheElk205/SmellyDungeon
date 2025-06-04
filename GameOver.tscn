@@ -79,4 +79,8 @@ Better luck enxt time :)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(399, 319)
+zoom = Vector2(2, 2)
+
 [connection signal="pressed" from="Back To Menu" to="." method="_on_back_to_menu_pressed"]

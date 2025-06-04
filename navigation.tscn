@@ -205,6 +205,10 @@ patch_margin_top = 15
 patch_margin_right = 15
 patch_margin_bottom = 15
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(399, 319)
+zoom = Vector2(2, 2)
+
 [connection signal="area_entered" from="Goal" to="Character" method="_on_goal_area_entered"]
 [connection signal="body_entered" from="Goal" to="Character" method="_on_goal_body_entered"]
 [connection signal="tree_exiting" from="TimerLabel" to="TimerLabel" method="_on_tree_exiting"]
